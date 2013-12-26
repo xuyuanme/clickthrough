@@ -638,6 +638,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "clickthrough.model.Main": [],
   "clickthrough.view.Main": []
 });
 Ext.ClassManager.addNameAliasMappings({
@@ -1357,7 +1358,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
-  "clickthrough.view.Main": [
-    "widget.main"
-  ]
+  "clickthrough.model.Main": [],
+  "clickthrough.view.Main": []
 });
