@@ -6,5 +6,7 @@ build/
 # sass cache folder
 resources/sass/.sass-cache/
 
+phonegap.local.properties
+
 # ignore WebStorm config
 .idea
