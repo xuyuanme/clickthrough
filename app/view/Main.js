@@ -1,50 +1,50 @@
 Ext.define('clickthrough.view.Main', {
-    extend: 'Ext.tab.Panel',
-    xtype: 'main',
-    requires: [
-        'Ext.TitleBar',
-        'Ext.Video'
-    ],
+    extend: 'Ext.Img',
+
+    screenWidth: (window.innerWidth > 0) ? window.innerWidth : screen.width,
+    screenHeight: (window.innerHeight > 0) ? window.innerHeight : screen.height,
+    ratioWidth: (window.innerWidth > 0) ? 320 / window.innerWidth : 320 / screen.width,
+    ratioHeight: (window.innerHeight > 0) ? 568 / window.innerHeight : 568 / screen.height,
+
+    pageX: 0,
+    pageY: 0,
+    images: [],
+    points: [],
+
     config: {
-        tabBarPosition: 'bottom',
+        title: null,
+        description: null
+    },
 
-        items: [
-            {
-                title: 'Welcome',
-                iconCls: 'home',
+    //sets up our tap event listener
+    initialize: function () {
+        console.log('Initialize clickthrough.view.Main');
+//        console.log(this.ratioWidth + ',' + this.ratioHeight);
+        this.callParent(arguments);
+    },
 
-                styleHtmlContent: true,
-                scrollable: true,
+    //this function is called whenever you tap on the image
+    onTap: function (e) {
+//        Ext.Msg.alert('coordinates', e.pageX + ',' + e.pageY + '/' + this.screenWidth + ',' + this.screenHeight);
+//        console.log(e.pageX + ',' + e.pageY + '/' + this.screenWidth + ',' + this.screenHeight);
+        this.pageX = e.pageX * this.ratioWidth;
+        this.pageY = e.pageY * this.ratioHeight;
 
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
-
-                html: [
-                    "You've just generated a new Sencha Touch 2 project. What you're looking at right now is the ",
-                    "contents of <a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a> - edit that file ",
-                    "and refresh to change what's rendered here."
-                ].join("")
-            },
-            {
-                title: 'Get Started',
-                iconCls: 'action',
-
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
-                    },
-                    {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
+        this.images = clickthrough.model.Main.images();
+        for (var h = 0; h < this.images.length; h++) {
+//            console.log('check if this is ' + this.images[h].img);
+            if (this.getSrc() == this.images[h].img) {
+                this.points = this.images[h].points;
+                for (var i = 0; i < this.points.length; i++) {
+//                    console.log('check if this is point ' + i);
+                    if (this.pageX >= this.points[i].minX && this.pageX <= this.points[i].maxX && this.pageY >= this.points[i].minY && this.pageY <= this.points[i].maxY) {
+                        this.setSrc(this.points[i].img);
+                        break;
                     }
-                ]
+                }
+                break;
             }
-        ]
+        }
+
     }
 });
