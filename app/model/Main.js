@@ -1,13 +1,13 @@
 Ext.define('clickthrough.model.Main', {
     singleton: true,
 
-    img1: 'resources/images/1.png',
-    img2: 'resources/images/2.png',
-    img3: 'resources/images/3.png',
-    img4: 'resources/images/4.png',
-    img5: 'resources/images/5.png',
-    img6: 'resources/images/6.png',
-    img7: 'resources/images/7.png',
+    img1: 'resources/images/1.PNG',
+    img2: 'resources/images/2.PNG',
+    img3: 'resources/images/3.PNG',
+    img4: 'resources/images/4.PNG',
+    img5: 'resources/images/5.PNG',
+    img6: 'resources/images/6.PNG',
+    img7: 'resources/images/7.PNG',
 
     images: function () {
         return [
