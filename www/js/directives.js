@@ -9,20 +9,20 @@ angular.module('myApp.directives', [])
             elm.text(version);
         };
     }])
-    .directive('mainBackground', function () {
-        return function (scope, element, attrs) {
-            scope.setBackground = function (value) {
-                element.css({
-                    'background-image': 'url(' + value + ')'
-                });
-            };
-        };
-    })
+//    .directive('mainBackground', function () {
+//        return function (scope, element, attrs) {
+//            scope.setBackground = function (value) {
+//                element.css({
+//                    'background-image': 'url(' + value + ')'
+//                });
+//            };
+//        };
+//    })
     .directive('transparentButton', function () {
         return function (scope, element, attrs) {
             attrs.$observe('transparentButton', function (value) {
                 element.css({
-                    'border': '1px',
+                    'border': '0px',
                     'border-color': 'red',
                     'border-style': 'solid',
                     'position': 'absolute',
