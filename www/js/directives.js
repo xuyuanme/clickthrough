@@ -18,7 +18,7 @@ angular.module('myApp.directives', [])
 //            };
 //        };
 //    })
-    .directive('transparentButton', function () {
+    .directive('transparentButton', ['screenService', function (screenService) {
         return function (scope, element, attrs) {
             attrs.$observe('transparentButton', function (value) {
                 element.css({
@@ -26,11 +26,11 @@ angular.module('myApp.directives', [])
                     'border-color': 'red',
                     'border-style': 'solid',
                     'position': 'absolute',
-                    'left': scope.$eval(value).left * scope.actualWidth / scope.definedWidth + (scope.screenWidth - scope.actualWidth) / 2 + 'px',
-                    'top': scope.$eval(value).top * scope.actualHeight / scope.definedHeight + (scope.screenHeight - scope.actualHeight) / 2 + 'px',
-                    'width': scope.$eval(value).width * scope.actualWidth / scope.definedWidth + 'px',
-                    'height': scope.$eval(value).height * scope.actualHeight / scope.definedHeight + 'px'
+                    'left': scope.$eval(value).left * screenService.actualScale + (screenService.screenWidth - screenService.actualWidth) / 2 + 'px',
+                    'top': scope.$eval(value).top * screenService.actualScale + (screenService.screenHeight - screenService.actualHeight) / 2 + 'px',
+                    'width': scope.$eval(value).width * screenService.actualScale + 'px',
+                    'height': scope.$eval(value).height * screenService.actualScale + 'px'
                 });
             });
         };
-    });
+    }]);
