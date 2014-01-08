@@ -22,9 +22,9 @@ angular.module('myApp.directives', [])
         return function (scope, element, attrs) {
             attrs.$observe('transparentButton', function (value) {
                 element.css({
-                    'border': '0px',
-                    'border-color': 'red',
-                    'border-style': 'solid',
+                    'border': 'none',
+//                    'border-color': 'red',
+//                    'border-style': 'solid',
                     'position': 'absolute',
                     'left': scope.$eval(value).left * screenService.actualScale + (screenService.screenWidth - screenService.actualWidth) / 2 + 'px',
                     'top': scope.$eval(value).top * screenService.actualScale + (screenService.screenHeight - screenService.actualHeight) / 2 + 'px',
